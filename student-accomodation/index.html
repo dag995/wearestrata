@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strata AI. Turn Your Contracts Into NOI.</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0F1A2E;--navy-mid:#1B2A4A;--navy-light:#243554;
+  --teal:#0EA5E9;--teal-light:#7DD3FC;
+  --slate:#94A3B8;--slate-light:#CBD5E1;
+  --light:#F8FAFC;--white:#FFFFFF;
+  --red:#DC2626;--red-soft:#FEE2E2;--red-dim:rgba(220,38,38,0.08);
+  --amber:#D97706;--green:#16A34A;
+  --heading:'Oswald',sans-serif;--body:'Roboto',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--body);color:var(--navy);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:860px;margin:0 auto;padding:0 2rem}
+.container-wide{max-width:1060px;margin:0 auto;padding:0 2rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;background:var(--navy);color:var(--white);display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-20%;width:80vw;height:80vw;background:radial-gradient(circle,rgba(14,165,233,0.05) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.hero-brand{font-family:var(--body);font-weight:700;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.2s}
+.hero-brand span{color:var(--teal)}
+.hero-patent{display:inline-block;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);border:1px solid rgba(148,163,184,0.3);padding:0.25rem 0.6rem;margin-left:1rem;vertical-align:middle}
+.hero-only{font-family:var(--heading);font-weight:600;font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.1;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s}
+.hero-only em{font-style:normal;color:var(--teal)}
+.hero-sub{font-weight:300;font-size:1.15rem;color:var(--slate-light);max-width:660px;line-height:1.7;margin-bottom:1rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.8s}
+.hero-gain{font-weight:400;font-size:0.95rem;color:var(--teal);margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 1s}
+.hero-cta{display:inline-block;font-family:var(--heading);font-weight:500;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);background:var(--teal);padding:0.9rem 2.2rem;text-decoration:none;transition:background 0.3s,transform 0.2s;opacity:0;animation:fadeUp 0.8s ease forwards 1.2s}
+.hero-cta:hover{background:var(--teal-light);transform:translateY(-1px)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);opacity:0;animation:fadeIn 1s ease forwards 2s}
+
+/* ===== SHARED ===== */
+.section-label{font-family:var(--heading);font-weight:500;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.section-heading{font-family:var(--heading);font-weight:600;font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:1.15;margin-bottom:1.5rem}
+.section-body{font-weight:300;font-size:1.05rem;color:#334155;margin-bottom:1.5rem;max-width:720px}
+
+/* ===== DUAL GRID (FEAR/GREED) ===== */
+.dual-section{padding:6rem 0;background:var(--light);border-bottom:1px solid #E2E8F0}
+.dual-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin-top:2rem}
+.dual-card{background:var(--white);border:1px solid #E2E8F0;padding:1.6rem 1.6rem 1.6rem 1.8rem}
+.dual-card.risk{border-left:3px solid var(--red)}
+.dual-card.gain{border-left:3px solid var(--teal)}
+.dual-title{font-family:var(--heading);font-weight:600;font-size:1.05rem;margin-bottom:0.4rem;letter-spacing:0.02em}
+.dual-card.risk .dual-title{color:var(--red)}
+.dual-card.gain .dual-title{color:var(--teal)}
+.dual-body{font-weight:300;font-size:0.92rem;color:#475569;line-height:1.6;margin-bottom:0.6rem}
+.dual-source{font-size:0.78rem;color:var(--slate);line-height:1.4}
+
+/* ===== INVESTOR SECTION ===== */
+.investor-section{padding:6rem 0;background:var(--navy);color:var(--white)}
+.investor-section .section-heading{color:var(--white)}
+.investor-section .section-body{color:var(--slate-light)}
+.investor-lead{font-family:var(--heading);font-weight:600;font-size:clamp(1.3rem,2.5vw,1.8rem);line-height:1.3;margin-bottom:1.5rem;color:var(--white)}
+.investor-lead em{font-style:normal;color:var(--teal)}
+.investor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+.investor-card{border-top:2px solid var(--teal);padding-top:1rem}
+.investor-card-title{font-family:var(--heading);font-weight:500;font-size:1rem;margin-bottom:0.3rem;color:var(--white)}
+.investor-card-body{font-weight:300;font-size:0.9rem;color:var(--slate-light);line-height:1.5}
+
+/* ===== CHAIN ===== */
+.chain{padding:6rem 0;background:var(--white)}
+.chain-steps{margin-top:3rem}
+.chain-step{display:grid;grid-template-columns:56px 1fr;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid #E2E8F0;align-items:start}
+.chain-step:last-child{border-bottom:none}
+.step-marker{width:44px;height:44px;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:600;font-size:1.1rem;color:var(--teal);flex-shrink:0}
+.step-title{font-family:var(--heading);font-weight:500;font-size:1.2rem;margin-bottom:0.4rem}
+.step-body{font-weight:300;font-size:0.95rem;color:#475569;line-height:1.7}
+
+/* ===== QUOTE ===== */
+.quote-section{padding:5rem 0;background:var(--navy-mid)}
+.quote-text{font-family:var(--heading);font-weight:500;font-size:clamp(1.3rem,2.8vw,1.9rem);color:var(--white);line-height:1.4;text-align:center;max-width:780px;margin:0 auto}
+.quote-text em{font-style:normal;color:var(--teal)}
+
+/* ===== PATENT ===== */
+.patent-section{padding:6rem 0;background:var(--light)}
+.patent-lead{font-family:var(--heading);font-weight:600;font-size:clamp(1.3rem,2.5vw,1.8rem);line-height:1.3;margin-bottom:1.5rem;color:var(--navy)}
+.patent-lead em{font-style:normal;color:var(--teal)}
+.patent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.patent-card{border-top:2px solid var(--teal);padding-top:1.2rem}
+.patent-card-title{font-family:var(--heading);font-weight:600;font-size:1rem;margin-bottom:0.4rem;color:var(--navy)}
+.patent-card-body{font-weight:300;font-size:0.92rem;color:#475569;line-height:1.6}
+.patent-ref{font-size:0.78rem;color:var(--slate);margin-top:2rem;text-align:center}
+
+/* ===== INTEGRATION ===== */
+.integration-section{padding:5rem 0;background:var(--white);border-bottom:1px solid #E2E8F0}
+.integration-intro{font-weight:300;font-size:1.05rem;color:#334155;margin-bottom:2.5rem;max-width:720px}
+.integration-categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.integration-cat-title{font-family:var(--heading);font-weight:500;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:0.8rem;padding-bottom:0.6rem;border-bottom:1px solid #E2E8F0}
+.integration-cat-list{display:flex;flex-wrap:wrap;gap:0.5rem}
+.integration-badge{font-family:var(--body);font-weight:400;font-size:0.82rem;color:var(--navy);letter-spacing:0.02em;padding:0.45rem 0.9rem;border:1px solid #E2E8F0;background:var(--light)}
+.integration-note{font-size:0.82rem;color:var(--slate);margin-top:2rem;text-align:center;line-height:1.6}
+
+/* ===== CREDIBILITY ===== */
+.credibility{padding:5rem 0;background:var(--light)}
+.credibility .section-body{color:#475569}
+.credential-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+.credential{border-top:2px solid var(--teal);padding-top:1rem}
+.credential-title{font-family:var(--heading);font-weight:500;font-size:1rem;margin-bottom:0.3rem}
+.credential-body{font-weight:300;font-size:0.9rem;color:#64748B;line-height:1.5}
+
+/* ===== CTA ===== */
+.cta-section{padding:6rem 0;background:var(--navy);color:var(--white);text-align:center}
+.cta-section .section-heading{color:var(--white);max-width:640px;margin-left:auto;margin-right:auto}
+.cta-body{font-weight:300;font-size:1.05rem;color:var(--slate-light);max-width:560px;margin:0 auto 2rem;line-height:1.7}
+.cta-button{display:inline-block;font-family:var(--heading);font-weight:500;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);background:var(--teal);padding:1rem 2.5rem;text-decoration:none;transition:background 0.3s,transform 0.2s}
+.cta-button:hover{background:var(--teal-light);transform:translateY(-1px)}
+.cta-contact{margin-top:1.5rem;font-size:0.9rem;color:var(--slate)}
+.cta-contact a{color:var(--teal-light);text-decoration:none}
+.cta-contact a:hover{text-decoration:underline}
+
+/* ===== FOOTER ===== */
+footer{padding:2rem;text-align:center;font-size:0.78rem;color:#94A3B8;background:var(--navy);border-top:1px solid rgba(255,255,255,0.06)}
+footer a{color:var(--teal-light);text-decoration:none}
+
+/* ===== HEADER ===== */
+header { display: flex; flex-direction: row; width:100%; flex-basis: 100%; }
+header div { width:100%; flex-basis: 100%; display:flex; flex-direction: row; justify-content: space-between; margin:0 0 0 auto; }
+header ul { list-style-type:none; margin:0 0 0 auto; display: flex; align-items: center;}
+header li a { color:#0F1A2E; text-decoration: none; }
+
+@media(max-width:768px){
+  .dual-grid{grid-template-columns:1fr}
+  .patent-grid{grid-template-columns:1fr}
+  .investor-grid{grid-template-columns:1fr}
+  .integration-categories{grid-template-columns:1fr}
+  .hero{padding:4rem 1.5rem 3rem}
+}
+</style>
+
+</head>
+<body>
+
+<header class="wp-block-template-part">
+  <div class="wp-block-group" style="margin-top:0px;margin-bottom:0px;padding-top:15px;padding-right:4vw;padding-bottom:15px;padding-left:4vw">
+    <figure class="wp-block-image size-full is-resized logo">
+      <a href="/">
+        <img decoding="async" src="https://wearestrata.ai/wp-content/uploads/2026/01/strata_logo_notag.svg" alt="" class="wp-image-30" style="width:150px" title="Strata AI" />
+      </a>
+    </figure>
+      <div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-77ab4cf0 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-right:0px;padding-left:15px">
+      <ul>
+        <li><a href="/" title="Home">Home</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-brand">Strata <span>AI</span> <span class="hero-patent">Patent Pending</span></div>
+    <h1 class="hero-only">
+      Occupancy is falling. Costs are<br>
+      rising. Your contracts are the<br>
+      only lever <em>you haven't pulled.</em>
+    </h1>
+    <p class="hero-sub">
+      Unite Students just guided EPS down 9-13% for 2026. Occupancy dropped from 97.5% to 95.2%. Operating costs rose 10%. Nomination agreements are shrinking. Rental growth is decelerating. Every PBSA operator is looking for margin. The one place nobody is looking is inside the contracts that govern what you pay and what you can charge.
+    </p>
+    <p class="hero-gain">
+      Strata reads every contract in your portfolio, extracts every commercial rule, and validates every charge against them. Overcharges recovered. Missing recharges collected. NOI improved. The investor reporting proves it.
+    </p>
+    <a href="#contact" class="hero-cta">Show me the leakage in my portfolio</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ===== FEAR + GREED GRID ===== -->
+<section class="dual-section">
+  <div class="container-wide">
+    <div class="section-label">The PBSA operator's dilemma</div>
+    <h2 class="section-heading">The era of effortless occupancy is over. Cost control is the new battleground.</h2>
+    <p class="section-body">
+      Occupancy fell 230 basis points in a single year. Operating costs rose 10%, driven by Real Living Wage, employer NI, insurance and council tax. Nomination agreements are shrinking as universities manage their own financial risk. The operators who demonstrate contract-level cost control will protect their margins. The operators who do not will watch them erode.
+    </p>
+    <div class="dual-grid">
+      <div class="dual-card risk">
+        <div class="dual-title">Opex rising faster than revenue</div>
+        <div class="dual-body">Property operating expenses rose 10% in 2025. Real Living Wage increases. Employer NI contributions. Insurance premiums. Council tax on vacant units. Marketing spend rising as students book later. These costs are governed by contracts. Nobody is checking whether the invoices match what the contracts actually permit. At 10% cost growth and decelerating rental growth, the margin erosion is structural, not cyclical.</div>
+        <div class="dual-source">Unite Group Preliminary Results, February 2026</div>
+      </div>
+      <div class="dual-card gain">
+        <div class="dual-title">NOI recovery without raising rents</div>
+        <div class="dual-body">Rental growth is decelerating. Affordability is constraining pricing power. You cannot grow the top line fast enough to offset a 10% cost increase. The fastest route to NOI recovery is not another rent increase. It is eliminating the charges you should not be paying and collecting the recharges you are entitled to make. Contract-level cost validation is the one lever that improves NOI without touching the student or the university relationship.</div>
+      </div>
+      <div class="dual-card risk">
+        <div class="dual-title">Nomination agreements shrinking</div>
+        <div class="dual-body">Unite's nomination beds fell from 59% to 55% of portfolio in a single year. Universities are managing their own financial risk by not renewing single-year agreements. The 77% renewal rate means nearly a quarter of your stable, high-quality income is being renegotiated or lost each cycle. Every renegotiation changes the commercial terms. Every changed term creates new rules. Nobody is systematically checking whether the new terms are being applied correctly.</div>
+        <div class="dual-source">Unite Group Preliminary Results, February 2026</div>
+      </div>
+      <div class="dual-card gain">
+        <div class="dual-title">Investor confidence through proof</div>
+        <div class="dual-body">Capital partners no longer accept top-line metrics and annual reviews. They want property-level cost validation with audit trails. Strata produces that evidence automatically. Every charge traced to its contract clause. Every deviation flagged and quantified. The reporting your investors are asking for, generated as a by-product of the validation itself.</div>
+      </div>
+      <div class="dual-card risk">
+        <div class="dual-title">Multi-contract portfolio complexity</div>
+        <div class="dual-body">A single building may operate under a university nomination agreement, a management contract, a cleaning framework, a maintenance SLA, a utilities supply agreement, and a catering contract. Each has its own rate cards, escalation provisions, and recharge entitlements. Your property management system sees none of this. It calculates charges. It does not validate them.</div>
+      </div>
+      <div class="dual-card gain">
+        <div class="dual-title">Acquisition due diligence that prevents the Empiric problem</div>
+        <div class="dual-body">Unite's Empiric portfolio delivered 89% occupancy against expectations, creating a 1.0-1.5p EPS drag in 2026. The contracts in an acquired portfolio contain the commercial reality. Strata reads every contract in a target before you close. Rate cards, escalation provisions, recharge entitlements, management fee bases. The commercial map that tells you what the portfolio will actually earn, not what the vendor's spreadsheet says.</div>
+        <div class="dual-source">Unite Group Preliminary Results, February 2026</div>
+      </div>
+      <div class="dual-card risk">
+        <div class="dual-title">Renters' Rights Act uncertainty</div>
+        <div class="dual-body">The PBSA exemption under the Renters' Rights Act 2025 requires membership of an approved code of practice and compliance with its standards. Your contract structures, your tenancy terms, and your charging practices must all align. The evidence of that alignment needs to exist before the question is asked, not after.</div>
+        <div class="dual-source">Renters' Rights Act 2025, s.9A exemption</div>
+      </div>
+      <div class="dual-card gain">
+        <div class="dual-title">Summer revenue protection</div>
+        <div class="dual-body">Conference and vacation letting contracts have different rate structures, different cancellation terms, and different damage provisions from your academic year agreements. Strata validates both. The same engine reads your 44-week licence agreement and your summer conference contract. Separate rules. Separate validation. One platform.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INVESTOR SECTION ===== -->
+<section class="investor-section">
+  <div class="container">
+    <div class="section-label" style="color:var(--teal-light)">The investor conversation</div>
+    <h2 class="section-heading">What your capital partners want to hear</h2>
+    <p class="investor-lead">
+      &pound;4.3 billion was invested in UK PBSA in 2025. But the market just shifted. Unite's share price fell 10% in a day on the 2026 guidance cut. Occupancy targets dropped to 93-96%. EPS is declining for the first time. Investors are moving from <em>"how full is it?"</em> to <em>"how tight is the cost control?"</em>
+    </p>
+    <p class="section-body" style="color:var(--slate-light)">
+      Property operating costs rose 10% while rental growth decelerated to 2-3%. The operators who can demonstrate contract-level cost validation, with audit trails to every clause, will protect their valuations. The operators who rely on spreadsheet reconciliation will face harder questions at every reporting cycle.
+    </p>
+    <div class="investor-grid">
+      <div class="investor-card">
+        <div class="investor-card-title">Property-level NOI transparency</div>
+        <div class="investor-card-body">Every cost validated against its contract authority. Every deviation quantified. Investor reporting generated automatically from the validation output.</div>
+      </div>
+      <div class="investor-card">
+        <div class="investor-card-title">Opex trend analysis</div>
+        <div class="investor-card-body">Contract-level cost tracking across cycles. Identify which supplier costs are growing faster than the contract permits. Evidence for renegotiation or retendering.</div>
+      </div>
+      <div class="investor-card">
+        <div class="investor-card-title">Acquisition due diligence</div>
+        <div class="investor-card-body">Read every contract in a target portfolio before you close. Map the commercial obligations. Identify overcharges, missing recharges, and contract risks before they transfer.</div>
+      </div>
+      <div class="investor-card">
+        <div class="investor-card-title">Audit-ready evidence</div>
+        <div class="investor-card-body">A permanent, immutable audit trail from charge to clause. Always current. Always available. Not assembled under pressure before a reporting deadline.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="container">
+    <p class="quote-text">
+      "You optimised occupancy. You optimised pricing. You optimised the turn. But <em>nobody has read the contracts</em> that govern what you actually owe and what you can actually charge. In a market where costs are rising 10% and rental growth is 2-3%, that is the gap that decides your margin."
+    </p>
+  </div>
+</section>
+
+<!-- ===== THE CHAIN ===== -->
+<section class="chain">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2 class="section-heading">Contract to clause. Clause to charge.<br>Charge to bed. Bed to NOI. Proved.</h2>
+    <p class="section-body">
+      Strata sits above your existing systems. It reads the documents they cannot. It validates every financial transaction against the contract and the law. It produces the property-level audit trail that proof requires.
+    </p>
+    <div class="chain-steps">
+      <div class="chain-step">
+        <div class="step-marker">1</div>
+        <div>
+          <div class="step-title">Contract to clause</div>
+          <div class="step-body">Every nomination agreement, licence agreement, supplier contract, management agreement, and framework arrangement read in a single pass. Every commercial term extracted into a structured knowledge graph: rate cards, escalation provisions, recharge entitlements, damage recovery terms, cleaning specifications, utility cost-sharing formulas, cancellation penalties. Each rule linked to its source clause.</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-marker">2</div>
+        <div>
+          <div class="step-title">Clause to charge</div>
+          <div class="step-body">Every supplier invoice, every utility recharge, every management fee, and every student charge matched against the extracted rules. Is this rate within the contract? Is this escalation correctly applied? Is this recharge permitted under the nomination agreement? Does this cleaning charge match the specification? Every deviation flagged. Every compliance point confirmed.</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-marker">3</div>
+        <div>
+          <div class="step-title">Charge to bed</div>
+          <div class="step-body">Every validated charge allocated to the individual property and room type it serves. Cluster flats, studios, twodios, en-suites, nomination beds, direct-let beds. Different contract terms for different booking channels. Different cost profiles for different building specifications. The result: a true cost-per-bed calculation that your investor reporting requires.</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-marker">4</div>
+        <div>
+          <div class="step-title">Bed to NOI</div>
+          <div class="step-body">Validated cost data flows directly into your financial reporting. Overcharges recovered. Missing recharges collected. Contract deviations eliminated. The NOI improvement is not a projection. It is a measured, auditable result with a clause reference for every pound recovered.</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-marker">&#10003;</div>
+        <div>
+          <div class="step-title">Proved</div>
+          <div class="step-body">A permanent, auditable compliance evidence layer. Not a dashboard on top of unvalidated data. Not a report assembled under pressure before an investor call. A living record that is always current, always auditable, and always ready: for the investor, the auditor, the university partner, and the board.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATENT ===== -->
+<section class="patent-section">
+  <div class="container">
+    <div class="section-label">Patent pending</div>
+    <h2 class="section-heading">Why nothing else can do this</h2>
+    <p class="patent-lead">
+      Your property management system calculates charges. Your accounting system pays invoices. Neither has ever read the contract that governs whether the number is right. Manual contract review costs &pound;50,000 to &pound;150,000 per engagement and does not scale. The problems reappear in the next cycle because <em>the underlying process has not changed</em>.
+    </p>
+    <p class="section-body">
+      Strata is the world's first system that reads contracts computationally, extracts executable rules, confirms them with your team, and validates charges deterministically against the confirmed rules. The gap between what the documents say and what the systems charge is closed permanently.
+    </p>
+    <div class="patent-grid">
+      <div class="patent-card">
+        <div class="patent-card-title">Reads every contract type in PBSA</div>
+        <div class="patent-card-body">Nomination agreements, student licence agreements, supplier contracts, management agreements, university partnership terms, conference and vacation letting contracts, cleaning and maintenance SLAs, utility supply agreements. Each document read once. Rules persisted permanently.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Handles the academic cycle</div>
+        <div class="patent-card-body">44-week and 51-week tenancies. Variable start dates. Early arrivals and late departures. Summer conference lets with different rate structures. Nomination allocation deadlines and release triggers. Pro-rata billing across booking types. The seasonal complexity that makes PBSA unique.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Resolves multi-contract buildings</div>
+        <div class="patent-card-body">A single property may have nomination beds, direct-let beds, a cleaning contract, a maintenance framework, a utilities agreement, and a management fee schedule. Each contract has its own rules. Strata resolves all of them from the source documents simultaneously.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Detects leakage in both directions</div>
+        <div class="patent-card-body">Overcharges from suppliers that erode your margin. Under-recoveries where you are entitled to recharge students, universities, or third parties but are not doing so. Both identified simultaneously. Both quantified with clause references.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Deterministic and reproducible</div>
+        <div class="patent-card-body">Given the same rules and the same cost data, the engine produces identical results on every execution. No AI is involved in the validation step. Confirmed rules are executable logic. Any historical calculation can be independently verified. Auditor-ready. Investor-ready.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Updates when contracts change</div>
+        <div class="patent-card-body">When a nomination agreement is renegotiated or a supplier contract renewed, Strata detects the changes, re-extracts only the affected rules, and invalidates dependent logic. No full re-read. No manual reconfiguration. The knowledge stays current automatically.</div>
+      </div>
+    </div>
+    <p class="patent-ref">Patent Pending: US 63/969,838 (Recursive Logic Caching) &amp; WAS-2026-002 (Automated Service Charge Derivation)</p>
+  </div>
+</section>
+
+<!-- ===== INTEGRATION ===== -->
+<section class="integration-section">
+  <div class="container-wide">
+    <div class="section-label">Your existing systems</div>
+    <h2 class="section-heading">Strata validates what your current platforms produce</h2>
+    <p class="integration-intro">
+      You already have systems for booking, property management, accounting, and student experience. Strata does not replace any of them. It reads the contracts that none of them can read, and validates every output against the rules those contracts contain.
+    </p>
+    <div class="integration-categories">
+      <div class="integration-cat">
+        <div class="integration-cat-title">PBSA &amp; accommodation management</div>
+        <div class="integration-cat-list">
+          <div class="integration-badge">Yardi Voyager</div>
+          <div class="integration-badge">Yardi Student IQ</div>
+          <div class="integration-badge">StarRez</div>
+          <div class="integration-badge">Kinetic Software</div>
+          <div class="integration-badge">Bidrento</div>
+          <div class="integration-badge">StuRents</div>
+        </div>
+      </div>
+      <div class="integration-cat">
+        <div class="integration-cat-title">Accounting &amp; finance</div>
+        <div class="integration-cat-list">
+          <div class="integration-badge">Yardi Financials</div>
+          <div class="integration-badge">Sage 50</div>
+          <div class="integration-badge">Sage 200</div>
+          <div class="integration-badge">Xero</div>
+          <div class="integration-badge">QuickBooks</div>
+          <div class="integration-badge">Microsoft Dynamics</div>
+        </div>
+      </div>
+      <div class="integration-cat">
+        <div class="integration-cat-title">Payments &amp; billing</div>
+        <div class="integration-cat-list">
+          <div class="integration-badge">Flywire</div>
+          <div class="integration-badge">TransferMate</div>
+          <div class="integration-badge">Stripe</div>
+          <div class="integration-badge">GoCardless</div>
+        </div>
+      </div>
+      <div class="integration-cat">
+        <div class="integration-cat-title">Maintenance &amp; operations</div>
+        <div class="integration-cat-list">
+          <div class="integration-badge">Fixflo</div>
+          <div class="integration-badge">Spike</div>
+          <div class="integration-badge">KLIQ (HFS)</div>
+          <div class="integration-badge">Spreadsheets</div>
+        </div>
+      </div>
+    </div>
+    <p class="integration-note">Strata connects via standard data feeds. Your systems produce the charges. Strata validates them against the contracts. No system replacement required.</p>
+  </div>
+</section>
+
+<!-- ===== CREDIBILITY ===== -->
+<section class="credibility">
+  <div class="container">
+    <div class="section-label">The company</div>
+    <h2 class="section-heading">Built by people who understand operational property</h2>
+    <p class="section-body">
+      Strata was not built in a research lab. It was built working alongside operational property teams, inside the finance and compliance function, grappling with exactly the problems described on this page. Supplier invoices checked against PO amounts instead of contract terms. Recharges missed because the entitlement was buried in a clause nobody had read since signing. Cost allocations built on precedent rather than clause authority.
+    </p>
+    <div class="credential-row">
+      <div class="credential">
+        <div class="credential-title">Two patents pending</div>
+        <div class="credential-body">Recursive Logic Caching (US 63/969,838) and Automated Service Charge Derivation (WAS-2026-002). The architecture and the domain computation, independently protected.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-title">Cross-sector proof</div>
+        <div class="credential-body">Live in housing association service charge compliance. Extended to leasehold property management and student accommodation. The same engine, adapted to the contracts that govern each sector.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-title">No replacement required</div>
+        <div class="credential-body">Connects to your Yardi, StarRez, Kinetic or accounting platform via standard data feeds. Live in weeks, not years. Above your systems, not instead of them.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="section-label" style="color:var(--teal-light)">See it</div>
+    <h2 class="section-heading">Give us one building's contracts.<br>We show you what they actually say.</h2>
+    <p class="cta-body">
+      Provide one property's nomination agreement, supplier contracts, and three months of cost data. We produce a detailed report showing every overcharge, every missed recharge, and every clause where the charge diverges from what the contract permits. Yours to keep regardless.
+    </p>
+    <a href="mailto:neal@wearestrata.ai" class="cta-button">Request a portfolio risk assessment</a>
+    <div class="cta-contact">
+      Neal Gandhi, CEO&ensp;|&ensp;<a href="mailto:neal@wearestrata.ai">neal@wearestrata.ai</a>&ensp;|&ensp;<a href="https://wearestrata.ai">wearestrata.ai</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    &copy; 2026 WeAreStrata Limited&ensp;|&ensp;Registered in England and Wales: 16974757&ensp;|&ensp;4 Usk Vale Court, Pontypool, Wales, NP4 8AS
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strata AI. Your Contracts Contain the Rules. Your Systems Ignore Them.</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0F1A2E;--navy-mid:#1B2A4A;--navy-light:#243554;
+  --teal:#0EA5E9;--teal-light:#7DD3FC;
+  --slate:#94A3B8;--slate-light:#CBD5E1;
+  --light:#F8FAFC;--white:#FFFFFF;
+  --red:#DC2626;--red-soft:#FEE2E2;--red-dim:rgba(220,38,38,0.08);
+  --amber:#D97706;
+  --heading:'Oswald',sans-serif;--body:'Roboto',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--body);color:var(--navy);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:860px;margin:0 auto;padding:0 2rem}
+.container-wide{max-width:1060px;margin:0 auto;padding:0 2rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+.hero{min-height:100vh;background:var(--navy);color:var(--white);display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-20%;width:80vw;height:80vw;background:radial-gradient(circle,rgba(14,165,233,0.05) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.hero-brand{font-family:var(--body);font-weight:700;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.2s}
+.hero-brand span{color:var(--teal)}
+.hero-patent{display:inline-block;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);border:1px solid rgba(148,163,184,0.3);padding:0.25rem 0.6rem;margin-left:1rem;vertical-align:middle}
+.hero-only{font-family:var(--heading);font-weight:600;font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.1;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s}
+.hero-only em{font-style:normal;color:var(--teal)}
+.hero-sub{font-weight:300;font-size:1.15rem;color:var(--slate-light);max-width:660px;line-height:1.7;margin-bottom:1rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.8s}
+.hero-risk{font-weight:400;font-size:0.95rem;color:var(--red);margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 1s}
+.hero-cta{display:inline-block;font-family:var(--heading);font-weight:500;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);background:var(--teal);padding:0.9rem 2.2rem;text-decoration:none;transition:background 0.3s,transform 0.2s;opacity:0;animation:fadeUp 0.8s ease forwards 1.2s}
+.hero-cta:hover{background:var(--teal-light);transform:translateY(-1px)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);opacity:0;animation:fadeIn 1s ease forwards 2s}
+
+.section-label{font-family:var(--heading);font-weight:500;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.section-heading{font-family:var(--heading);font-weight:600;font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:1.15;margin-bottom:1.5rem}
+.section-body{font-weight:300;font-size:1.05rem;color:#334155;margin-bottom:1.5rem;max-width:720px}
+
+.risk-section{padding:6rem 0;background:var(--light);border-bottom:1px solid #E2E8F0}
+.risk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin-top:2rem}
+.risk-card{background:var(--white);border:1px solid #E2E8F0;border-left:3px solid var(--red);padding:1.6rem 1.6rem 1.6rem 1.8rem}
+.risk-title{font-family:var(--heading);font-weight:600;font-size:1.05rem;color:var(--red);margin-bottom:0.4rem;letter-spacing:0.02em}
+.risk-body{font-weight:300;font-size:0.92rem;color:#475569;line-height:1.6;margin-bottom:0.6rem}
+.risk-source{font-size:0.78rem;color:var(--slate);line-height:1.4}
+
+.examples-section{padding:6rem 0;background:var(--navy);color:var(--white)}
+.examples-section .section-heading{color:var(--white)}
+.examples-section .section-body{color:var(--slate-light)}
+.examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.example-card{border-top:2px solid var(--teal);padding-top:1.2rem}
+.example-card-title{font-family:var(--heading);font-weight:600;font-size:1rem;margin-bottom:0.4rem;color:var(--white)}
+.example-card-body{font-weight:300;font-size:0.92rem;color:var(--slate-light);line-height:1.6}
+
+.chain{padding:6rem 0;background:var(--white)}
+.chain-steps{margin-top:3rem}
+.chain-step{display:grid;grid-template-columns:56px 1fr;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid #E2E8F0;align-items:start}
+.chain-step:last-child{border-bottom:none}
+.step-marker{width:44px;height:44px;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:600;font-size:1.1rem;color:var(--teal);flex-shrink:0}
+.step-title{font-family:var(--heading);font-weight:500;font-size:1.2rem;margin-bottom:0.4rem}
+.step-body{font-weight:300;font-size:0.95rem;color:#475569;line-height:1.7}
+
+.quote-section{padding:5rem 0;background:var(--navy-mid)}
+.quote-text{font-family:var(--heading);font-weight:500;font-size:clamp(1.3rem,2.8vw,1.9rem);color:var(--white);line-height:1.4;text-align:center;max-width:780px;margin:0 auto}
+.quote-text em{font-style:normal;color:var(--teal)}
+
+.patent-section{padding:6rem 0;background:var(--light)}
+.patent-lead{font-family:var(--heading);font-weight:600;font-size:clamp(1.3rem,2.5vw,1.8rem);line-height:1.3;margin-bottom:1.5rem;color:var(--navy)}
+.patent-lead em{font-style:normal;color:var(--teal)}
+.patent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.patent-card{border-top:2px solid var(--teal);padding-top:1.2rem}
+.patent-card-title{font-family:var(--heading);font-weight:600;font-size:1rem;margin-bottom:0.4rem;color:var(--navy)}
+.patent-card-body{font-weight:300;font-size:0.92rem;color:#475569;line-height:1.6}
+.patent-ref{font-size:0.78rem;color:var(--slate);margin-top:2rem;text-align:center}
+
+.credibility{padding:5rem 0;background:var(--white);border-bottom:1px solid #E2E8F0}
+.credibility .section-body{color:#475569}
+.credential-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+.credential{border-top:2px solid var(--teal);padding-top:1rem}
+.credential-title{font-family:var(--heading);font-weight:500;font-size:1rem;margin-bottom:0.3rem}
+.credential-body{font-weight:300;font-size:0.9rem;color:#64748B;line-height:1.5}
+
+.cta-section{padding:6rem 0;background:var(--navy);color:var(--white);text-align:center}
+.cta-section .section-heading{color:var(--white);max-width:640px;margin-left:auto;margin-right:auto}
+.cta-body{font-weight:300;font-size:1.05rem;color:var(--slate-light);max-width:560px;margin:0 auto 2rem;line-height:1.7}
+.cta-button{display:inline-block;font-family:var(--heading);font-weight:500;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);background:var(--teal);padding:1rem 2.5rem;text-decoration:none;transition:background 0.3s,transform 0.2s}
+.cta-button:hover{background:var(--teal-light);transform:translateY(-1px)}
+.cta-contact{margin-top:1.5rem;font-size:0.9rem;color:var(--slate)}
+.cta-contact a{color:var(--teal-light);text-decoration:none}
+.cta-contact a:hover{text-decoration:underline}
+
+footer{padding:2rem;text-align:center;font-size:0.78rem;color:#94A3B8;background:var(--navy);border-top:1px solid rgba(255,255,255,0.06)}
+footer a{color:var(--teal-light);text-decoration:none}
+
+/* ===== HEADER ===== */
+header { display: flex; flex-direction: row; width:100%; flex-basis: 100%; }
+header div { width:100%; flex-basis: 100%; display:flex; flex-direction: row; justify-content: space-between; margin:0 0 0 auto; }
+header ul { list-style-type:none; margin:0 0 0 auto; display: flex; align-items: center;}
+header li a { color:#0F1A2E; text-decoration: none; }
+
+@media(max-width:768px){
+  .risk-grid{grid-template-columns:1fr}
+  .patent-grid{grid-template-columns:1fr}
+  .examples-grid{grid-template-columns:1fr}
+  .hero{padding:4rem 1.5rem 3rem}
+}
+</style>
+</head>
+<body>
+  
+  <header class="wp-block-template-part">
+    <div class="wp-block-group" style="margin-top:0px;margin-bottom:0px;padding-top:15px;padding-right:4vw;padding-bottom:15px;padding-left:4vw">
+      <figure class="wp-block-image size-full is-resized logo">
+        <a href="/">
+          <img decoding="async" src="https://wearestrata.ai/wp-content/uploads/2026/01/strata_logo_notag.svg" alt="" class="wp-image-30" style="width:150px" title="Strata AI" />
+        </a>
+      </figure>
+        <div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-77ab4cf0 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-right:0px;padding-left:15px">
+        <ul>
+          <li><a href="/" title="Home">Home</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-brand">Strata <span>AI</span> <span class="hero-patent">Patent Pending</span></div>
+    <h1 class="hero-only">
+      Your contracts contain the rules.<br>
+      Your systems <em>ignore them.</em>
+    </h1>
+    <p class="hero-sub">
+      You negotiated every clause. Rate cards, SLA penalties, volume discounts, escalation caps, recharge entitlements, scope boundaries. Then the contract went into a drawer and your ERP started processing invoices against PO amounts. Nobody checks whether the invoice matches the clause. Across thousands of invoices, the leakage compounds silently.
+    </p>
+    <p class="hero-risk">
+      Organisations lose 9 to 11% of contract value after signature. Not through bad negotiation. Through bad execution.
+    </p>
+    <a href="#contact" class="hero-cta">Show me the leakage in my contracts</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ===== THE LEAKAGE ===== -->
+<section class="risk-section">
+  <div class="container-wide">
+    <div class="section-label">The value erosion problem</div>
+    <h2 class="section-heading">Six ways your contracts leak value after signature</h2>
+    <p class="section-body">
+      World Commerce &amp; Contracting has tracked contract value erosion for over a decade. Their latest research, published in partnership with Ironclad in January 2026, puts procurement contract leakage at 11%. The causes are structural. They exist in every contract-heavy organisation. They are invisible until someone reads the contracts and checks the numbers.
+    </p>
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-title">Rate card drift</div>
+        <div class="risk-body">You negotiated rates for labour, materials, and services. Those rates have escalation provisions, anniversary dates, and index-linked adjustments. Your AP team processes invoices against the PO. Nobody checks whether the rate on the invoice matches the rate in the contract for that date, that volume, that service category. The supplier knows. You do not.</div>
+        <div class="risk-source">WorldCC: unauthorised scope changes and missed price adjustments are primary leakage sources</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">Volume discount erosion</div>
+        <div class="risk-body">Your contract contains volume-based pricing tiers. At 10,000 units you get a lower rate. At 50,000 units, lower still. But the volume is tracked in your procurement system and the rate is tracked in the supplier's billing system. Nobody reconciles whether the volume threshold was crossed and the discount applied. The larger you are, the more you lose.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">SLA penalties uncollected</div>
+        <div class="risk-body">Your service contracts contain SLA targets with financial penalties for non-performance. Response times. Resolution times. Uptime guarantees. Delivery windows. The SLA is in the contract. The performance data is in your operations system. Nobody connects them. The penalty is your entitlement. If you do not claim it, it does not exist.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">Scope creep undetected</div>
+        <div class="risk-body">The supplier invoices for items or services outside the contracted scope. Emergency call-out rates applied to routine work. Premium materials charged when standard was specified. Out-of-hours rates applied during business hours. Each line item is small. Across hundreds of invoices, it is substantial. Your contract defines what is in scope. Your system does not check.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">Auto-renewal on unfavourable terms</div>
+        <div class="risk-body">Contracts renew automatically unless notice is given within a specific window. The renewal terms may include price increases that exceed your negotiated caps. The notice window is in the contract. Nobody is tracking it systematically. By the time you notice, the window has closed and you are locked in for another cycle at the wrong price.</div>
+        <div class="risk-source">WorldCC: auto-renewals on unfavourable terms identified as key leakage source, January 2026</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-title">Consumables and pass-through markups</div>
+        <div class="risk-body">Your contract specifies that consumables are passed through at cost, or at cost plus an agreed margin. But "at cost" depends on the supplier's procurement price, which you never see. And the agreed margin differs by category, by contract, by amendment. The markup rules are in the contract. The invoices are in your AP system. The gap between them is your money.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXAMPLES ===== -->
+<section class="examples-section">
+  <div class="container">
+    <div class="section-label" style="color:var(--teal-light)">Where this applies</div>
+    <h2 class="section-heading">Every sector. Every contract. The same gap.</h2>
+    <p class="section-body">
+      Wherever charges must comply with what a contract says, the gap between the document and the system creates leakage. Strata closes it. The architecture is document-agnostic. The commercial logic extraction works on any contract.
+    </p>
+    <div class="examples-grid">
+      <div class="example-card">
+        <div class="example-card-title">Healthcare</div>
+        <div class="example-card-body">Clinical supply contracts, managed equipment service agreements, FM contracts, agency staffing frameworks, pharmaceutical purchasing agreements, catering and linen services. Each has its own rate cards, volume tiers, SLA provisions, and recharge entitlements.</div>
+      </div>
+      <div class="example-card">
+        <div class="example-card-title">Facilities management</div>
+        <div class="example-card-body">Hard and soft FM contracts, planned preventive maintenance schedules, reactive maintenance SLAs, cleaning specifications, security contracts, waste management agreements. Scope boundaries, response times, and penalty clauses that nobody checks against actual invoices.</div>
+      </div>
+      <div class="example-card">
+        <div class="example-card-title">PFI and PPP</div>
+        <div class="example-card-body">Long-duration contracts with complex payment mechanisms, performance deduction regimes, lifecycle fund contributions, benchmarking and market testing provisions. Hundreds of pages of commercial logic that govern millions of pounds in annual unitary charges.</div>
+      </div>
+      <div class="example-card">
+        <div class="example-card-title">Outsourced services</div>
+        <div class="example-card-body">IT outsourcing, BPO, managed print, payroll services, logistics and distribution. Service credits, volume commitments, change control procedures, exit provisions. The contract defines the commercial relationship. The invoices often tell a different story.</div>
+      </div>
+      <div class="example-card">
+        <div class="example-card-title">Catering and hospitality</div>
+        <div class="example-card-body">Airline catering contracts, hospital catering agreements, corporate catering frameworks. Meal rates by category, volume bands, ingredient cost pass-throughs, waste allowances, equipment maintenance obligations. Tight margins where a 2% variance changes the economics.</div>
+      </div>
+      <div class="example-card">
+        <div class="example-card-title">Construction and engineering</div>
+        <div class="example-card-body">NEC and JCT contracts, subcontractor agreements, professional services appointments. Variations, daywork rates, retention provisions, defects liability periods, liquidated damages. Commercial rules that are litigated precisely because they are not checked until a dispute arises.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="container">
+    <p class="quote-text">
+      "Value erosion is rarely caused by a single failure. It emerges from a fragmented operating model in which contracting activities are split across functions, systems, and stages of the lifecycle, with <em>no single owner accountable</em> for the economic outcomes."
+    </p>
+    <p style="text-align:center;margin-top:1rem;font-size:0.82rem;color:var(--slate)">Tim Cummins, President, World Commerce &amp; Contracting, January 2026</p>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="chain">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2 class="section-heading">Contract to clause. Clause to invoice.<br>Invoice to variance. Variance to recovery.</h2>
+    <p class="section-body">
+      Strata sits above your existing systems. It reads the contracts they cannot. It validates every financial transaction against the commercial rules those contracts contain. It produces the audit trail that proof requires.
+    </p>
+    <div class="chain-steps">
+      <div class="chain-step">
+        <div class="step-marker">1</div>
+        <div>
+          <div class="step-title">Contract to clause</div>
+          <div class="step-body">Every contract, framework agreement, SLA schedule, rate card, and amendment read using a combination of machine learning extraction and large language model interpretation. Every commercial term extracted into a structured knowledge graph: pricing tiers, escalation formulas, volume discount thresholds, SLA targets and penalties, scope boundaries, recharge entitlements, pass-through margins, renewal windows. Each rule linked to its source clause.</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-marker">2</div>
+        <div>
+          <div class="step-title">Clause confirmed</div>
+          <div class="step-body">Extracted rules are presented to your commercial, procurement, or finance team for review and confirmation. Every rule shown alongside the source clause it was derived from. Your team confirms, adjusts, or rejects. Once confirmed, the rule is frozen into a deterministic logic graph. No AI is involved in the validation step. No hallucination risk. No interpretation drift.</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-marker">3</div>
+        <div>
+          <div class="step-title">Invoice to variance</div>
+          <div class="step-body">Every invoice line, every service charge, every consumable, every labour charge matched against the confirmed rules. Is this rate correct for this date? Has the volume threshold been crossed? Is this item within scope? Is this escalation correctly applied? Does this pass-through match the agreed margin? Every deviation flagged with the specific clause reference, the reasoning, and the financial impact.</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-marker">4</div>
+        <div>
+          <div class="step-title">Variance to recovery</div>
+          <div class="step-body">Overcharges identified with clause citations ready for dispute or credit note. Under-recoveries identified where you are entitled to recharge, claim SLA penalties, or apply contractual remedies but are not doing so. Each finding is a line item with a source clause reference and a pound value. The evidence package is already assembled.</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-marker">&#10003;</div>
+        <div>
+          <div class="step-title">Proved</div>
+          <div class="step-body">A permanent, auditable compliance evidence layer. Not a dashboard on top of unvalidated data. Not an annual contract review assembled under deadline pressure. A living record that is always current, always auditable, and always ready: for the CFO, the auditor, the supplier, and the board.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATENT ===== -->
+<section class="patent-section">
+  <div class="container">
+    <div class="section-label">Patent pending</div>
+    <h2 class="section-heading">Why nothing else can do this</h2>
+    <p class="patent-lead">
+      Your ERP system processes transactions. Your CLM system stores contracts. Neither connects them. Manual contract review costs &pound;50,000 to &pound;150,000 per engagement and covers a sample, not a portfolio. The problems reappear in the next billing cycle because <em>the underlying process has not changed</em>.
+    </p>
+    <p class="section-body">
+      Strata is the world's first system that reads contracts computationally, extracts executable commercial rules, confirms them with your team, and validates every financial transaction deterministically against the confirmed rules. The gap between what the documents say and what the systems charge is closed permanently.
+    </p>
+    <div class="patent-grid">
+      <div class="patent-card">
+        <div class="patent-card-title">Reads any commercial contract</div>
+        <div class="patent-card-body">Service agreements, framework contracts, SLA schedules, rate cards, purchase agreements, lease terms, amendments, variations, side letters. Each document read once. Rules persisted permanently. Applied across every subsequent billing cycle without re-reading.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Extracts executable rules, not summaries</div>
+        <div class="patent-card-body">Pricing tiers and volume bands. Escalation formulas and index references. SLA targets and penalty calculations. Scope definitions and exclusions. Pass-through margins and markup caps. Renewal windows and notice periods. Every rule linked to its source clause, its effective date range, and its dependencies.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Handles contract families</div>
+        <div class="patent-card-body">A single supplier relationship may involve a master agreement, multiple work orders, a rate card, an SLA schedule, and three amendments. Each document modifies, extends, or overrides provisions in the others. Strata resolves the complete hierarchy and determines the effective rule at any point in time.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Validates services and consumables</div>
+        <div class="patent-card-body">Labour rates by grade, by location, by time of day. Material costs against agreed pass-through margins. Equipment charges against contracted rental rates. Consumable volumes against specification allowances. The commercial logic that governs every type of charge in your supplier portfolio.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Deterministic and reproducible</div>
+        <div class="patent-card-body">AI is used for extraction. It is not used for validation. Confirmed rules are executable logic. Given the same rules and the same input data, the engine produces identical output on every execution. Any historical validation can be independently verified. Auditor-ready. Board-ready. Dispute-ready.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Updates when contracts change</div>
+        <div class="patent-card-body">When a contract is amended, renewed, or varied, Strata detects which provisions have changed, re-extracts only the affected rules, and invalidates dependent logic. No full re-read. No manual reconfiguration. Full version history preserved for any point-in-time audit or dispute.</div>
+      </div>
+    </div>
+    <p class="patent-ref">Patent Pending: US 63/969,838 (Recursive Logic Caching) &amp; WAS-2026-002 (Automated Service Charge Derivation)</p>
+  </div>
+</section>
+
+<!-- ===== CREDIBILITY ===== -->
+<section class="credibility">
+  <div class="container">
+    <div class="section-label">The company</div>
+    <h2 class="section-heading">Built from real contract problems. Not a research lab.</h2>
+    <p class="section-body">
+      Strata was built working alongside operational teams grappling with exactly the problems described on this page. Supplier invoices checked against PO amounts instead of contract terms. SLA penalties unclaimed because the performance data and the contract lived in different systems. Rate card changes applied by the supplier but not verified by the buyer. Cost allocations built on precedent rather than clause authority.
+    </p>
+    <div class="credential-row">
+      <div class="credential">
+        <div class="credential-title">Two patents pending</div>
+        <div class="credential-body">Recursive Logic Caching (US 63/969,838) and Automated Service Charge Derivation (WAS-2026-002). The architecture and the domain computation, independently protected.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-title">Proven in property</div>
+        <div class="credential-body">Live in housing association service charge compliance. Extended to leasehold property management and student accommodation. The same engine, now applied to any contract-governed charge in any sector.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-title">No replacement required</div>
+        <div class="credential-body">Connects to your ERP, procurement, AP, and contract management platforms via standard data feeds. Live in weeks, not years. Above your systems, not instead of them.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-title">Cross-sector architecture</div>
+        <div class="credential-body">The extraction and caching architecture does not assume a contract type. Service agreements, framework contracts, SLA schedules, rate cards. Any unstructured text containing commercial logic can be compiled into the graph.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="section-label" style="color:var(--teal-light)">See it</div>
+    <h2 class="section-heading">Give us your contracts.<br>We show you what they actually say.</h2>
+    <p class="cta-body">
+      Provide a sample of your supplier contracts and three months of invoice data. We produce a detailed report showing every rate variance, every missed entitlement, and every clause where the charge diverges from what the contract permits. Yours to keep regardless.
+    </p>
+    <a href="mailto:neal@wearestrata.ai" class="cta-button">Request a contract risk assessment</a>
+    <div class="cta-contact">
+      Neal Gandhi, CEO&ensp;|&ensp;<a href="mailto:neal@wearestrata.ai">neal@wearestrata.ai</a>&ensp;|&ensp;<a href="https://wearestrata.ai">wearestrata.ai</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    &copy; 2026 WeAreStrata Limited&ensp;|&ensp;Registered in England and Wales: 16974757&ensp;|&ensp;4 Usk Vale Court, Pontypool, Wales, NP4 8AS
+  </p>
+</footer>
+
+</body>
+</html>

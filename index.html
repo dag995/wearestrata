@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strata AI. We Read Contracts. Machines Don't. Until Now.</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0F1A2E;--navy-mid:#1B2A4A;--navy-light:#243554;
+  --teal:#0EA5E9;--teal-light:#7DD3FC;
+  --slate:#94A3B8;--slate-light:#CBD5E1;
+  --light:#F8FAFC;--white:#FFFFFF;
+  --red:#DC2626;--red-soft:#FEE2E2;--red-dim:rgba(220,38,38,0.08);
+  --amber:#D97706;
+  --heading:'Oswald',sans-serif;--body:'Roboto',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--body);color:var(--navy);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:860px;margin:0 auto;padding:0 2rem}
+.container-wide{max-width:1060px;margin:0 auto;padding:0 2rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;background:var(--navy);color:var(--white);display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-20%;width:80vw;height:80vw;background:radial-gradient(circle,rgba(14,165,233,0.05) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.hero-brand{font-family:var(--body);font-weight:700;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.2s}
+.hero-brand span{color:var(--teal)}
+.hero-patent{display:inline-block;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);border:1px solid rgba(148,163,184,0.3);padding:0.25rem 0.6rem;margin-left:1rem;vertical-align:middle}
+.hero-only{font-family:var(--heading);font-weight:600;font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.1;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s}
+.hero-only em{font-style:normal;color:var(--teal)}
+.hero-sub{font-weight:300;font-size:1.15rem;color:var(--slate-light);max-width:660px;line-height:1.7;margin-bottom:1rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.8s}
+.hero-risk{font-weight:400;font-size:0.95rem;color:var(--red);margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 1s}
+.hero-cta{display:inline-block;font-family:var(--heading);font-weight:500;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);background:var(--teal);padding:0.9rem 2.2rem;text-decoration:none;transition:background 0.3s,transform 0.2s;opacity:0;animation:fadeUp 0.8s ease forwards 1.2s}
+.hero-cta:hover{background:var(--teal-light);transform:translateY(-1px)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);opacity:0;animation:fadeIn 1s ease forwards 2s}
+
+/* ===== SHARED ===== */
+.section-label{font-family:var(--heading);font-weight:500;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.section-heading{font-family:var(--heading);font-weight:600;font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:1.15;margin-bottom:1.5rem}
+.section-body{font-weight:300;font-size:1.05rem;color:#334155;margin-bottom:1.5rem;max-width:720px}
+
+/* ===== THE PROBLEM ===== */
+.problem-section{padding:6rem 0;background:var(--light);border-bottom:1px solid #E2E8F0}
+.problem-lead{font-family:var(--heading);font-weight:600;font-size:clamp(1.3rem,2.5vw,1.8rem);line-height:1.3;margin-bottom:1.5rem;color:var(--navy)}
+.problem-lead em{font-style:normal;color:var(--teal)}
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.problem-card{background:var(--white);border:1px solid #E2E8F0;border-left:3px solid var(--red);padding:1.6rem 1.6rem 1.6rem 1.8rem}
+.problem-title{font-family:var(--heading);font-weight:600;font-size:1.05rem;color:var(--red);margin-bottom:0.4rem;letter-spacing:0.02em}
+.problem-body{font-weight:300;font-size:0.92rem;color:#475569;line-height:1.6}
+
+/* ===== NUMBERS ===== */
+.numbers{padding:5rem 0;background:var(--navy);color:var(--white)}
+.numbers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;text-align:center}
+.num-item .num-val{font-family:var(--heading);font-weight:600;font-size:clamp(2rem,5vw,3rem);color:var(--teal);line-height:1;margin-bottom:0.4rem;letter-spacing:-0.02em}
+.num-item .num-label{font-weight:300;font-size:0.88rem;color:var(--slate-light);line-height:1.4}
+.num-source{font-size:0.75rem;color:var(--slate);text-align:center;margin-top:2.5rem}
+
+/* ===== HOW IT WORKS ===== */
+.how-section{padding:6rem 0;background:var(--white)}
+.how-lead{font-family:var(--heading);font-weight:600;font-size:clamp(1.3rem,2.5vw,1.8rem);line-height:1.3;margin-bottom:1.5rem;color:var(--navy)}
+.how-lead em{font-style:normal;color:var(--teal)}
+.how-steps{margin-top:2.5rem}
+.how-step{display:grid;grid-template-columns:56px 1fr;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid #E2E8F0;align-items:start}
+.how-step:last-child{border-bottom:none}
+.how-marker{width:44px;height:44px;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:600;font-size:1.1rem;color:var(--teal);flex-shrink:0}
+.how-title{font-family:var(--heading);font-weight:500;font-size:1.2rem;margin-bottom:0.4rem}
+.how-body{font-weight:300;font-size:0.95rem;color:#475569;line-height:1.7}
+
+/* ===== QUOTE ===== */
+.quote-section{padding:5rem 0;background:var(--navy-mid)}
+.quote-text{font-family:var(--heading);font-weight:500;font-size:clamp(1.3rem,2.8vw,1.9rem);color:var(--white);line-height:1.4;text-align:center;max-width:780px;margin:0 auto}
+.quote-text em{font-style:normal;color:var(--teal)}
+
+/* ===== COMPARISON ===== */
+.comparison-section{padding:6rem 0;background:var(--light)}
+.comp-table-wrap{margin-top:2.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.comp-table{width:100%;border-collapse:collapse;font-size:0.85rem;min-width:800px}
+.comp-table thead th{font-family:var(--heading);font-weight:500;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.8rem 1rem;text-align:left;border-bottom:2px solid var(--navy);color:var(--navy);white-space:nowrap}
+.comp-table thead th:last-child{background:rgba(14,165,233,0.06);color:var(--teal)}
+.comp-table tbody td{padding:0.7rem 1rem;border-bottom:1px solid #E2E8F0;color:#475569;font-weight:300;vertical-align:top;line-height:1.4}
+.comp-table tbody td:first-child{font-weight:500;color:var(--navy);font-size:0.88rem}
+.comp-table tbody td:last-child{background:rgba(14,165,233,0.03);font-weight:400;color:var(--navy)}
+.comp-table .icon-yes{color:var(--teal);font-weight:700}
+.comp-table .icon-no{color:var(--red);font-weight:400}
+.comp-table .icon-partial{color:var(--amber);font-weight:400}
+
+/* ===== VERTICALS ===== */
+.verticals-section{padding:6rem 0;background:var(--white);border-bottom:1px solid #E2E8F0}
+.verticals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+.vertical-card{border:1px solid #E2E8F0;padding:2rem;transition:border-color 0.2s,box-shadow 0.2s;position:relative;text-decoration:none;color:inherit;display:block}
+.vertical-card:hover{border-color:var(--teal);box-shadow:0 4px 20px rgba(14,165,233,0.08)}
+.vertical-status{font-family:var(--heading);font-weight:500;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;display:inline-block;padding:0.2rem 0.5rem}
+.vertical-status.live{color:var(--teal);background:rgba(14,165,233,0.08)}
+.vertical-status.active{color:var(--amber);background:rgba(217,119,6,0.08)}
+.vertical-status.pipeline{color:var(--slate);background:rgba(148,163,184,0.1)}
+.vertical-card-title{font-family:var(--heading);font-weight:600;font-size:1.15rem;margin-bottom:0.5rem;color:var(--navy)}
+.vertical-card-body{font-weight:300;font-size:0.92rem;color:#475569;line-height:1.6;margin-bottom:1rem}
+.vertical-card-docs{font-size:0.82rem;color:var(--slate);line-height:1.5}
+.vertical-card-docs strong{color:#475569;font-weight:500}
+.vertical-card-arrow{position:absolute;bottom:2rem;right:2rem;font-family:var(--heading);font-size:1rem;color:var(--teal);opacity:0;transition:opacity 0.2s}
+.vertical-card:hover .vertical-card-arrow{opacity:1}
+
+/* ===== PATENT ===== */
+.patent-section{padding:6rem 0;background:var(--navy);color:var(--white)}
+.patent-section .section-heading{color:var(--white)}
+.patent-section .section-body{color:var(--slate-light)}
+.patent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.patent-card{border-top:2px solid var(--teal);padding-top:1.2rem}
+.patent-card-title{font-family:var(--heading);font-weight:600;font-size:1rem;margin-bottom:0.4rem;color:var(--white)}
+.patent-card-body{font-weight:300;font-size:0.92rem;color:var(--slate-light);line-height:1.6}
+.patent-ref{font-size:0.78rem;color:var(--slate);margin-top:2rem;text-align:center}
+
+/* ===== CREDIBILITY ===== */
+.credibility{padding:5rem 0;background:var(--light)}
+.credibility .section-body{color:#475569}
+.credential-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+.credential{border-top:2px solid var(--teal);padding-top:1rem}
+.credential-title{font-family:var(--heading);font-weight:500;font-size:1rem;margin-bottom:0.3rem}
+.credential-body{font-weight:300;font-size:0.9rem;color:#64748B;line-height:1.5}
+
+/* ===== CTA ===== */
+.cta-section{padding:6rem 0;background:var(--navy);color:var(--white);text-align:center}
+.cta-section .section-heading{color:var(--white);max-width:640px;margin-left:auto;margin-right:auto}
+.cta-body{font-weight:300;font-size:1.05rem;color:var(--slate-light);max-width:560px;margin:0 auto 2rem;line-height:1.7}
+.cta-button{display:inline-block;font-family:var(--heading);font-weight:500;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);background:var(--teal);padding:1rem 2.5rem;text-decoration:none;transition:background 0.3s,transform 0.2s}
+.cta-button:hover{background:var(--teal-light);transform:translateY(-1px)}
+.cta-contact{margin-top:1.5rem;font-size:0.9rem;color:var(--slate)}
+.cta-contact a{color:var(--teal-light);text-decoration:none}
+.cta-contact a:hover{text-decoration:underline}
+
+/* ===== HEADER ===== */
+header { display: flex; flex-direction: row; width:100%; flex-basis: 100%; }
+header div { width:100%; flex-basis: 100%; display:flex; flex-direction: row; justify-content: space-between; margin:0 0 0 auto; }
+header ul { list-style-type:none; margin:0 0 0 auto; display: flex; align-items: center;}
+header li a { color:#0F1A2E; text-decoration: none; }
+
+/* ===== FOOTER ===== */
+footer{padding:2rem;text-align:center;font-size:0.78rem;color:#94A3B8;background:var(--navy);border-top:1px solid rgba(255,255,255,0.06)}
+footer a{color:var(--teal-light);text-decoration:none}
+
+@media(max-width:768px){
+  .problem-grid{grid-template-columns:1fr}
+  .patent-grid{grid-template-columns:1fr}
+  .verticals-grid{grid-template-columns:1fr}
+  .numbers-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:4rem 1.5rem 3rem}
+  .comp-table-wrap{margin-left:-1rem;margin-right:-1rem;padding:0 1rem}
+}
+</style>
+</head>
+<body>
+
+<header class="wp-block-template-part">
+  <div class="wp-block-group" style="margin-top:0px;margin-bottom:0px;padding-top:15px;padding-right:4vw;padding-bottom:15px;padding-left:4vw">
+    <figure class="wp-block-image size-full is-resized logo">
+      <a href="/">
+        <img decoding="async" src="https://wearestrata.ai/wp-content/uploads/2026/01/strata_logo_notag.svg" alt="" class="wp-image-30" style="width:150px" title="Strata AI" />
+      </a>
+    </figure>
+      <div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-77ab4cf0 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-right:0px;padding-left:15px">
+      <ul>
+        <li><a href="/" title="Home">Home</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-brand">Strata <span>AI</span> <span class="hero-patent">Patent Pending</span></div>
+    <h1 class="hero-only">
+      We read contracts.<br>
+      We extract the rules.<br>
+      We validate <em>every charge</em><br>
+      against them.
+    </h1>
+    <p class="hero-sub">
+      Your systems process transactions. They pay invoices. They calculate charges. None of them has ever read the contract that governs whether the number is right. Strata extracts the commercial rules from your contracts using machine learning and AI, confirms them with your experts, and validates every charge against the confirmed rules. Continuously. Deterministically. With a full audit trail to the source clause.
+    </p>
+    <p class="hero-risk">
+      8.6% of contract value is lost to commercial leakage every year. That is the gap between what your documents say and what your systems charge.
+    </p>
+    <a href="#verticals" class="hero-cta">See how it applies to your sector</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ===== THE PROBLEM ===== -->
+<section class="problem-section">
+  <div class="container-wide">
+    <div class="section-label">The problem</div>
+    <h2 class="section-heading">The contract says one thing. The system charges another.</h2>
+    <p class="problem-lead">
+      Every organisation that pays or collects charges governed by a contract faces the same structural problem. The contract contains the rules. The systems contain the transactions. <em>Nothing connects them.</em>
+    </p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-title">Sellers operationalise contracts</div>
+        <div class="problem-body">Service providers know exactly which clauses permit emergency rates, after-hours premiums, and material markups. Their billing systems are configured to capture every entitlement. This is rational commercial behaviour.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-title">Buyers file contracts</div>
+        <div class="problem-body">Organisations negotiate hard upfront then put the document in a drawer. Invoices are processed against PO amounts. Nobody checks whether each line complies with the actual contract terms because the cost of doing so exceeds the value of any individual discrepancy.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-title">Leakage accumulates silently</div>
+        <div class="problem-body">Across thousands of invoices, the discrepancies compound. Charges applied without clause authority. Entitlements not collected. Apportionments based on precedent rather than the current contract. The errors are not visible until someone reads the contract. Nobody reads the contract.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-title">Manual review does not scale</div>
+        <div class="problem-body">A forensic auditor costs &pound;50 to &pound;150 per review. That is rational for a sample, not a portfolio. The problems the auditor finds in the sample exist everywhere. They reappear in the next billing cycle because the underlying process has not changed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NUMBERS ===== -->
+<section class="numbers">
+  <div class="container">
+    <div class="numbers-grid">
+      <div class="num-item">
+        <div class="num-val">8.6%</div>
+        <div class="num-label">of contract value lost to<br>commercial leakage</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">70%+</div>
+        <div class="num-label">of disputed service charges<br>found to contain errors</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">Every</div>
+        <div class="num-label">charge validated. Every clause<br>referenced. Every deviation flagged.</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">Seconds</div>
+        <div class="num-label">to produce the audit trail<br>that manual review takes weeks</div>
+      </div>
+    </div>
+    <p class="num-source">WorldCC / Deloitte Commercial Performance Study. FTT (Property Chamber) published decisions.</p>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how-section">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2 class="section-heading">Extract. Confirm. Freeze. Validate everything.</h2>
+    <p class="how-lead">
+      Strata treats contract compliance as a <em>caching problem</em>, not a repeated inference problem. Machine learning and large language models extract the rules. Your domain experts confirm them. Once confirmed, the rules are frozen into a deterministic logic graph and applied to every charge, identically, forever. No hallucination. No drift. No interpretation variability.
+    </p>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-marker">1</div>
+        <div>
+          <div class="how-title">Extract the rules</div>
+          <div class="how-body">Every contract, lease, policy, schedule, and regulatory instrument analysed using a combination of machine learning extraction and large language model interpretation. ML models identify clause boundaries, classify charge types, and extract structured entities. LLMs interpret conditional logic, cross-references, and commercial intent. The output is not a summary. It is a structured set of executable rules: pricing models, scope boundaries, eligibility criteria, apportionment methodologies, cap provisions, escalation conditions, penalty thresholds. Each rule linked to its source clause.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-marker">2</div>
+        <div>
+          <div class="how-title">Confirm with your experts</div>
+          <div class="how-body">Extracted rules are presented to your domain experts for review and confirmation. Every rule is shown alongside the source clause it was derived from. Your team confirms, adjusts, or rejects each rule. This is the step that eliminates hallucination risk entirely. No rule enters the compliance layer without human confirmation. Once confirmed, the rule is frozen: deterministic, auditable, and applied identically from that point forward.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-marker">3</div>
+        <div>
+          <div class="how-title">Cache the confirmed rules</div>
+          <div class="how-body">Confirmed rules are stored in a patent-pending three-tier memory hierarchy optimised for the access patterns of compliance workloads. Rules are indexed across five dimensions: parameter, entity, time period, dependency, and semantic similarity. Any query resolves instantly against the frozen logic graph. No AI is involved in the validation step. The rules are deterministic code, not probabilistic inference.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-marker">4</div>
+        <div>
+          <div class="how-title">Validate every charge</div>
+          <div class="how-body">Every invoice line, service charge, cost allocation, and rechargeable item matched against the cached rules. Is this charge within scope? Is this rate current? Is this apportionment correct? Does this clause permit this cost category? Every deviation flagged with the specific clause reference, the reasoning, and the financial impact.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-marker">5</div>
+        <div>
+          <div class="how-title">Update incrementally</div>
+          <div class="how-body">When a contract is amended, Strata detects which sections have changed, re-extracts only the affected rules, and invalidates dependent logic. No full re-read. No manual reconfiguration. The cached knowledge stays current automatically. Version history enables retrieval of rules as they were at any past date.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-marker">&#10003;</div>
+        <div>
+          <div class="how-title">Prove it</div>
+          <div class="how-body">Every validated charge linked to the source rule, the source clause in the contract, and the input data used in the computation. A complete, immutable, deterministic audit trail. The same rules and the same data produce identical results on every execution. Auditor-ready. Tribunal-ready. Board-ready.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="container">
+    <p class="quote-text">
+      "The contracts contain the rules. The systems contain the transactions. <em>Nothing connects them.</em> That is where the leakage lives. Strata closes that gap permanently."
+    </p>
+  </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section class="comparison-section">
+  <div class="container-wide">
+    <div class="section-label">Why existing approaches fail</div>
+    <h2 class="section-heading">Six approaches. One gap.</h2>
+    <p class="section-body">
+      Every existing approach to contract compliance either automates the calculation without reading the contract, or reads the contract without automating the validation. Strata is the first system that extracts rules using ML and AI, confirms them with your domain experts, and then validates deterministically against the confirmed rules.
+    </p>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Direct LLM</th>
+            <th>Standard RAG</th>
+            <th>Rules Engine</th>
+            <th>RPA</th>
+            <th>Consultants</th>
+            <th>Strata AI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Reads contracts</td>
+            <td class="icon-partial">&#9888; Hallucinates</td>
+            <td class="icon-partial">&#9888; Misses nuance</td>
+            <td class="icon-no">&#10007; Cannot</td>
+            <td class="icon-no">&#10007; Cannot</td>
+            <td class="icon-yes">&#10003; Manual</td>
+            <td class="icon-yes">&#10003; ML + LLM extraction</td>
+          </tr>
+          <tr>
+            <td>Extracts executable rules</td>
+            <td class="icon-no">&#10007; Text only</td>
+            <td class="icon-no">&#10007; Chunks only</td>
+            <td class="icon-partial">&#9888; Manual coding</td>
+            <td class="icon-no">&#10007; No</td>
+            <td class="icon-yes">&#10003; Manual</td>
+            <td class="icon-yes">&#10003; Expert confirmed</td>
+          </tr>
+          <tr>
+            <td>Validates per clause</td>
+            <td class="icon-no">&#10007; No audit trail</td>
+            <td class="icon-no">&#10007; Approximate</td>
+            <td class="icon-yes">&#10003; If coded correctly</td>
+            <td class="icon-no">&#10007; Blind execution</td>
+            <td class="icon-partial">&#9888; Sampled</td>
+            <td class="icon-yes">&#10003; Every line</td>
+          </tr>
+          <tr>
+            <td>Handles contract updates</td>
+            <td class="icon-no">&#10007; Re-read entire doc</td>
+            <td class="icon-no">&#10007; Re-index all</td>
+            <td class="icon-no">&#10007; Manual recode</td>
+            <td class="icon-no">&#10007; Breaks silently</td>
+            <td class="icon-no">&#10007; New engagement</td>
+            <td class="icon-yes">&#10003; Incremental</td>
+          </tr>
+          <tr>
+            <td>Scales across portfolio</td>
+            <td class="icon-no">&#10007; Cost scales linearly</td>
+            <td class="icon-no">&#10007; Cost scales linearly</td>
+            <td class="icon-partial">&#9888; Licence tiers</td>
+            <td class="icon-partial">&#9888; Per-bot licensing</td>
+            <td class="icon-no">&#10007; Per engagement</td>
+            <td class="icon-yes">&#10003; Read once, validate forever</td>
+          </tr>
+          <tr>
+            <td>Deterministic output</td>
+            <td class="icon-no">&#10007; Probabilistic</td>
+            <td class="icon-no">&#10007; Probabilistic</td>
+            <td class="icon-yes">&#10003; Yes</td>
+            <td class="icon-yes">&#10003; Yes</td>
+            <td class="icon-partial">&#9888; Human variability</td>
+            <td class="icon-yes">&#10003; Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VERTICALS ===== -->
+<section class="verticals-section" id="verticals">
+  <div class="container-wide">
+    <div class="section-label">Applications</div>
+    <h2 class="section-heading">The technology is horizontal. The application is vertical.</h2>
+    <p class="section-body">
+      Wherever charges must comply with what a contract says, Strata validates them. The architecture reads any document. The domain expertise is built for each sector. Each vertical has its own dedicated platform, its own compliance logic, and its own language.
+    </p>
+    <div class="verticals-grid">
+      <a href="/housing" class="vertical-card">
+        <div class="vertical-status live">Live</div>
+        <div class="vertical-card-title">Housing Associations</div>
+        <div class="vertical-card-body">Service charge compliance validation for England and Wales. Tenancy agreements, service charge policies, apportionment schedules, regulatory standards. Every home, every charge, every clause.</div>
+        <div class="vertical-card-docs"><strong>Documents:</strong> Tenancy agreements, service charge policies, Welsh Government Rent Standard, RSH regulatory framework</div>
+        <span class="vertical-card-arrow">&rarr;</span>
+      </a>
+      <a href="/property" class="vertical-card">
+        <div class="vertical-status active">Active</div>
+        <div class="vertical-card-title">Leasehold Property Management</div>
+        <div class="vertical-card-body">Service charge validation for residential and commercial leasehold portfolios. Multi-era lease complexity, Section 20 compliance, reserve fund obligations, sweeper clause boundaries.</div>
+        <div class="vertical-card-docs"><strong>Documents:</strong> Residential leases, commercial leases, management agreements, Landlord and Tenant Act 1985</div>
+        <span class="vertical-card-arrow">&rarr;</span>
+      </a>
+      <a href="/student" class="vertical-card">
+        <div class="vertical-status pipeline">Pipeline</div>
+        <div class="vertical-card-title">Student Accommodation</div>
+        <div class="vertical-card-body">Charge validation for PBSA portfolios. Licence agreements, nomination agreements, inclusive packages, variable billing periods, multi-room-type complexity.</div>
+        <div class="vertical-card-docs"><strong>Documents:</strong> Student licence agreements, nomination agreements, management contracts</div>
+        <span class="vertical-card-arrow">&rarr;</span>
+      </a>
+      <a href="/contracts" class="vertical-card">
+        <div class="vertical-status pipeline">Pipeline</div>
+        <div class="vertical-card-title">Contract Management</div>
+        <div class="vertical-card-body">Invoice validation against any service contract. PFI, FM agreements, outsourced services, framework agreements. The contract defines the rules. Strata enforces them.</div>
+        <div class="vertical-card-docs"><strong>Documents:</strong> Service contracts, framework agreements, SLA schedules, rate cards</div>
+        <span class="vertical-card-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATENT ===== -->
+<section class="patent-section">
+  <div class="container">
+    <div class="section-label" style="color:var(--teal-light)">Patent pending</div>
+    <h2 class="section-heading">Recursive Logic Caching</h2>
+    <p class="section-body">
+      A world-first architecture that combines machine learning extraction, large language model interpretation, and expert confirmation to compile unstructured contract text into a deterministic, frozen logic graph. Other approaches force a choice: the hallucination risks of generative AI, or the manual coding bottleneck of rules engines. Strata eliminates the trade-off. ML and LLMs do the extraction. Your experts confirm the rules. The confirmed rules execute deterministically, with zero AI involvement in the validation step.
+    </p>
+    <div class="patent-grid">
+      <div class="patent-card">
+        <div class="patent-card-title">Three-tier memory hierarchy</div>
+        <div class="patent-card-body">Hot, warm and cold cache tiers optimised for the access patterns of compliance workloads. The most frequently accessed rules are served instantly. The architecture scales across portfolios of any size without degradation.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Probabilistic pre-fetch</div>
+        <div class="patent-card-body">Statistical co-occurrence models learn which rules are queried together. Related rules are pre-loaded into the hot cache before they are needed. 76% of queries benefit. 31x effective speedup from pre-fetching.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Five-dimensional indexing</div>
+        <div class="patent-card-body">Rules indexed by parameter, entity, time period, dependency graph, and semantic vector. Queries decomposed into multi-index lookups. O(log R) retrieval complexity regardless of total rule volume.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Incremental update controller</div>
+        <div class="patent-card-body">Cryptographic hashing detects which contract sections have changed. Only affected rules are re-extracted. Dependent rules are invalidated and recomputed. No full re-read required. Full version history preserved for any point-in-time audit.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Deterministic execution</div>
+        <div class="patent-card-body">AI is used for extraction. It is not used for validation. Confirmed rules are executable logic, not probabilistic text. Given the same rules and the same input data, the engine produces identical output on every execution. Zero hallucination risk. Complete reproducibility for audit and dispute. The separation between AI-powered extraction and deterministic execution is fundamental to the architecture.</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-card-title">Document agnostic</div>
+        <div class="patent-card-body">The extraction and caching architecture does not assume a document type. Leases, contracts, policies, regulations, framework agreements, licence terms. Any unstructured text containing commercial logic can be compiled into the graph.</div>
+      </div>
+    </div>
+    <p class="patent-ref">US 63/969,838 (Recursive Logic Caching) &amp; WAS-2026-002 (Automated Service Charge Derivation)</p>
+  </div>
+</section>
+
+<!-- ===== CREDIBILITY ===== -->
+<section class="credibility">
+  <div class="container">
+    <div class="section-label">The company</div>
+    <h2 class="section-heading">Built by people who have done this before</h2>
+    <p class="section-body">
+      Strata was not built in a research lab. It was built inside the finance and compliance functions of organisations dealing with exactly the problems described on this page. We watched skilled professionals manually cross-referencing contracts against spreadsheets, applying institutional memory instead of clause authority, and producing compliance evidence under pressure from four systems and a fifth spreadsheet. That is why we built Strata.
+    </p>
+    <div class="credential-row">
+      <div class="credential">
+        <div class="credential-title">Two patents pending</div>
+        <div class="credential-body">Recursive Logic Caching (US 63/969,838) and Automated Service Charge Derivation (WAS-2026-002). The architecture and the domain computation, independently protected.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-title">Production ML + LLM engineering</div>
+        <div class="credential-body">CTO with production ML experience at scale. A combined machine learning and large language model extraction pipeline, with expert confirmation and deterministic execution. Designed for enterprise deployment with multi-tenant isolation, row-level security, and real-time usage metering.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-title">Domain-first development</div>
+        <div class="credential-body">Each vertical is built from requirements confirmed with domain experts, not assumptions. From confirmed requirements to working product in weeks. 13 epics, 63 user stories, 48 API endpoints, 8 modules in the first vertical alone.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-title">No replacement required</div>
+        <div class="credential-body">Strata sits above your existing systems. It validates what they produce. No procurement exercise. No system migration. No workflow change. Live in weeks, not years.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="section-label" style="color:var(--teal-light)">Start here</div>
+    <h2 class="section-heading">Tell us which contracts govern your charges.<br>We show you what they actually say.</h2>
+    <p class="cta-body">
+      Provide one set of contracts and three months of charge data. We produce a detailed report showing every overcharge, every under-recovery, and every clause where the calculation diverges from what the document says. Yours to keep regardless.
+    </p>
+    <a href="/cdn-cgi/l/email-protection#d3bdb6b2bf93a4b6b2a1b6a0a7a1b2a7b2fdb2ba" class="cta-button">Request a risk assessment</a>
+    <div class="cta-contact">
+      Neal Gandhi, CEO&ensp;|&ensp;<a href="/cdn-cgi/l/email-protection#0f616a6e634f786a6e7d6a7c7b7d6e7b6e216e66"><span class="__cf_email__" data-cfemail="78161d1914380f1d190a1d0b0c0a190c19561911">[email&#160;protected]</span></a>&ensp;|&ensp;<a href="https://wearestrata.ai">wearestrata.ai</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+   
