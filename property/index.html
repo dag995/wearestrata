@@ -168,21 +168,23 @@
 
 <body>
 
-<header class="wp-block-template-part">
-  <div class="wp-block-group" style="margin-top:0px;margin-bottom:0px;padding-top:15px;padding-right:4vw;padding-bottom:15px;padding-left:4vw">
-    <figure class="wp-block-image size-full is-resized logo">
-      <a href="/">
-        <img decoding="async" src="https://wearestrata.ai/wp-content/uploads/2026/01/strata_logo_notag.svg" alt="" class="wp-image-30" style="width:150px" title="Strata AI" />
-      </a>
-    </figure>
-      <div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-77ab4cf0 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-right:0px;padding-left:15px">
-      <ul>
-        <li><a href="/" title="Home">Home</a></li>
-      </ul>
+  <header class="wp-block-template-part">
+    <div class="wp-block-group" style="margin-top:0px;margin-bottom:0px;padding-top:15px;padding-right:4vw;padding-bottom:15px;padding-left:4vw">
+      <figure class="wp-block-image size-full is-resized logo">
+        <a href="/">
+          <img decoding="async" src="https://wearestrata.ai/wp-content/uploads/2026/01/strata_logo_notag.svg" alt="" class="wp-image-30" style="width:150px" title="Strata AI" />
+        </a>
+        </figure>
+        <div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-77ab4cf0 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-right:0px;padding-left:15px">
+          <ul>
+            <li><a href="/" title="Home">Home</a></li>
+            <li><a href="/contract-management" title="Contract Mnagement">Contract Mnagement</a></li>
+            <li><a href="/student-accomodation" title="Student Accomodation">Student Accomodation</a></li>
+            <li><a href="/property" title="Property">Property</a></li>
+          </ul>
+        </div>
     </div>
-  </div>
-</header>
-
+  </header>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -525,41 +527,54 @@
 </section>
 
 <footer>
-  <p>
-    &copy; 2026 WeAreStrata Limited&ensp;|&ensp;Registered in England and Wales: 16974757&ensp;|&ensp;4 Usk Vale Court, Pontypool, Wales, NP4 8AS
-  </p>
+  <p>&copy; 2026 WeAreStrata Limited&ensp;|&ensp;Registered in England and Wales: 16974757&ensp;|&ensp;4 Usk Vale Court, Pontypool, Wales, NP4 8AS</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var MIN = 500000, MAX = 50000000, STEP = 250000, RATE = 0.086;
-var slider = document.getElementById('slider');
-var gbpDisplay = document.getElementById('gbpDisplay');
-var spendDisp = document.getElementById('spendDisplay');
-var trackFill = document.getElementById('trackFill');
-var fVal = document.getElementById('fVal');
-var fResult = document.getElementById('fResult');
-var ticksEl = document.getElementById('ticks');
+<script>
+  "use strict"
 
-function fmtGBP(n) { return new Intl.NumberFormat('en-GB', {style:'currency', currency:'GBP', maximumFractionDigits:0}).format(n); }
+  const MIN = 500000, MAX = 50000000, STEP = 250000, RATE = 0.086;
+  const slider = document.getElementById('slider');
+  const gbpDisplay = document.getElementById('gbpDisplay');
+  const spendDisp = document.getElementById('spendDisplay');
+  const trackFill = document.getElementById('trackFill');
+  const fVal = document.getElementById('fVal');
+  const fResult = document.getElementById('fResult');
+  const ticksEl = document.getElementById('ticks');
 
-var tickVals = [500000, 5000000, 10000000, 20000000, 30000000, 40000000, 50000000];
-for (var i = 0; i < tickVals.length; i++) {
-  var tv = tickVals[i];
-  var span = document.createElement('span');
-  span.className = 'tick';
-  span.setAttribute('data-val', tv);
-  span.textContent = tv >= 1000000 ? '£' + (tv / 1000000) + 'm' : '£' + (tv / 1000) + 'k';
-  span.style.left = ((tv - MIN) / (MAX - MIN)) * 100 + '%';
-  ticksEl.appendChild(span);
-}
+  function fmtGBP(n) { return new Intl.NumberFormat('en-GB', {style:'currency', currency:'GBP', maximumFractionDigits:0}).format(n); }
 
-function update() {
-  var val = Number(slider.value);
-  var leakage = Math.round(val * RATE);
-  var pct = ((val - MIN) / (MAX - MIN)) * 100;
-  spendDisp.textContent = fmtGBP(val);
-  gbpDisplay.textContent = fmtGBP(leakage);
-  fVal.textContent = fmtGBP(val);
-  fResult.textContent = fmtGBP(leakage);
-  trackFill.style.width = pct + '%';
-  var allTicks = ticksEl.querySelectorAl
+    var tickVals = [500000, 5000000, 10000000, 20000000, 30000000, 40000000, 50000000];
+    for (var i = 0; i < tickVals.length; i++) {
+      var tv = tickVals[i];
+      var span = document.createElement('span');
+      span.className = 'tick';
+      span.setAttribute('data-val', tv);
+      span.textContent = tv >= 1000000 ? '£' + (tv / 1000000) + 'm' : '£' + (tv / 1000) + 'k';
+      span.style.left = ((tv - MIN) / (MAX - MIN)) * 100 + '%';
+      ticksEl.appendChild(span);
+    }
+
+    function update() {
+      const val = +slider.value;
+      const gbp = val * MULT;
+      const pct = ((val - MIN) / (MAX - MIN)) * 100;
+
+      // valDisplay.textContent = fmtNum(val);
+      gbpDisplay.textContent = fmtGBP(gbp);
+      fVal.textContent       = fmtNum(val);
+      fResult.textContent    = fmtGBP(gbp);
+      trackFill.style.width  = pct + '%';
+
+      // Highlight nearest ticks
+      ticksEl.querySelectorAll('.tick').forEach(t => {
+        const diff = Math.abs(+t.dataset.val - val);
+        t.classList.toggle('near', diff < STEP * 10);
+      });
+    }
+
+    slider.addEventListener('input', update);
+    update();
+  </script>
+  </body>
+</html>
