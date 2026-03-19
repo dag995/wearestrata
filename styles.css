@@ -683,9 +683,9 @@ input[type="range"]::-moz-range-thumb {
 
 .problem-card {
   background: var(--white);
-  border: 1px solid #E2E8F0;
-  border-left: 3px solid var(--red);
-  padding: 1.6rem 1.6rem 1.6rem 1.8rem
+  border: 2px solid var(--red);
+  padding: 1.6rem 1.6rem 1.6rem 1.8rem;
+  border-radius:10px;
 }
 
 .problem-title {
@@ -924,7 +924,8 @@ input[type="range"]::-moz-range-thumb {
   position: relative;
   text-decoration: none;
   color: inherit;
-  display: block
+  display: block;
+  border-radius:10px;
 }
 
 .vertical-card:hover {
@@ -1037,7 +1038,8 @@ input[type="range"]::-moz-range-thumb {
 
 .patent-card {
   border: 2px solid var(--teal);
-  padding: 1.2rem
+  padding: 1.2rem;
+  border-radius:10px;
 }
 
 .patent-card-title {
@@ -1310,13 +1312,36 @@ header li a {
 }
 
 /* ===== FOOTER ===== */
+
 footer {
   padding: 2rem;
-  text-align: center;
   font-size: 0.78rem;
   color: #94A3B8;
   background: var(--navy);
-  border-top: 1px solid rgba(255, 255, 255, 0.06)
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+footer p {
+  margin-bottom:10px;
+}
+
+footer img {
+  max-width:200px;
+  margin-bottom:20px;
+}
+
+footer hr {
+  margin:30px 0;
+}
+
+footer .wrap {
+  max-width:660px;
+  width:100%;
+  margin:0 auto;
+}
+
+footer ul {
+  margin:0 0 10px 10px;
 }
 
 footer a {
