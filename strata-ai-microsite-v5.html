@@ -139,6 +139,12 @@ input[type="range"]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;b
 .cta-contact a{color:var(--teal-light);text-decoration:none}
 .cta-contact a:hover{text-decoration:underline}
 
+/* ===== HEADER ===== */
+header { display: flex; flex-direction: row; width:100%; flex-basis: 100%; }
+header div { width:100%; flex-basis: 100%; display:flex; flex-direction: row; justify-content: space-between; margin:0 0 0 auto; }
+header ul { list-style-type:none; margin:0 0 0 auto; display: flex; align-items: center;}
+header li a { color:#0F1A2E; text-decoration: none; }
+
 /* ===== FOOTER ===== */
 footer{padding:2rem;text-align:center;font-size:0.78rem;color:#94A3B8;background:var(--navy);border-top:1px solid rgba(255,255,255,0.06)}
 footer a{color:var(--teal-light);text-decoration:none}
@@ -152,6 +158,24 @@ footer a{color:var(--teal-light);text-decoration:none}
 </style>
 </head>
 <body>
+
+<header class="wp-block-template-part">
+  <div class="wp-block-group" style="margin-top:0px;margin-bottom:0px;padding-top:15px;padding-right:4vw;padding-bottom:15px;padding-left:4vw">
+    <figure class="wp-block-image size-full is-resized logo">
+      <a href="/">
+        <img decoding="async" src="https://wearestrata.ai/wp-content/uploads/2026/01/strata_logo_notag.svg" alt="" class="wp-image-30" style="width:150px" title="Strata AI" />
+      </a>
+    </figure>
+      <div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-77ab4cf0 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-right:0px;padding-left:15px">
+      <ul>
+        <li><a href="/" title="Home">Home</a></li>
+        <li><a href="/contract-management" title="Contract Mnagement">Contract Mnagement</a></li>
+        <li><a href="/student-accomodation" title="Student Accomodation">Student Accomodation</a></li>
+        <li><a href="/property" title="Property">Property</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
