@@ -1407,3 +1407,11 @@ footer a {
   }
 
 }
+
+@media(max-width:560px) {
+  header div {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
