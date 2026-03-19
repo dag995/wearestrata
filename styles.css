@@ -791,7 +791,8 @@ input[type="range"]::-moz-range-thumb {
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--teal);
-  flex-shrink: 0
+  flex-shrink: 0;
+  border-radius:50%;
 }
 
 .how-title {
@@ -1078,12 +1079,13 @@ input[type="range"]::-moz-range-thumb {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem
+  margin-top: 2rem;
 }
 
 .credential {
-  border-top: 2px solid var(--teal);
-  padding-top: 1rem
+  border: 2px solid var(--teal);
+  border-radius:10px;
+  padding: 1.2rem
 }
 
 .credential-title {
@@ -1295,6 +1297,7 @@ header li a {
   flex-shrink: 0;
   border-radius: 50%;
   color: #FFF;
+  border-radius:50%;
 }
 
 .step-title {
