@@ -13,48 +13,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel='stylesheet' href="../styles.css" media='all' />
 <style>
-.section-label{font-family:var(--heading);font-weight:500;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
-.section-heading{font-family:var(--heading);font-weight:600;font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:1.15;margin-bottom:1.5rem}
-.section-body{font-weight:300;font-size:1.05rem;color:#334155;margin-bottom:1.5rem;max-width:720px}
-
-.risk-section{padding:6rem 0;background:var(--light);border-bottom:1px solid #E2E8F0}
-.risk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin-top:2rem}
-.risk-card{background:var(--white);border:1px solid #E2E8F0;border-left:3px solid var(--red);padding:1.6rem 1.6rem 1.6rem 1.8rem}
-.risk-title{font-family:var(--heading);font-weight:600;font-size:1.05rem;color:var(--red);margin-bottom:0.4rem;letter-spacing:0.02em}
-.risk-body{font-weight:300;font-size:0.92rem;color:#475569;line-height:1.6;margin-bottom:0.6rem}
-.risk-source{font-size:0.78rem;color:var(--slate);line-height:1.4}
-
 .examples-section{padding:6rem 0;background:var(--navy);color:var(--white)}
 .examples-section .section-heading{color:var(--white)}
 .examples-section .section-body{color:var(--slate-light)}
 .examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
-.example-card{border-top:2px solid var(--teal);padding-top:1.2rem}
+.example-card { 
+  border:2px solid var(--teal);
+  padding:1.2rem;
+  border-radius:10px;
+}
 .example-card-title{font-family:var(--heading);font-weight:600;font-size:1rem;margin-bottom:0.4rem;color:var(--white)}
 .example-card-body{font-weight:300;font-size:0.92rem;color:var(--slate-light);line-height:1.6}
 
-.chain{padding:6rem 0;background:var(--white)}
-.chain-steps{margin-top:3rem}
-.chain-step{display:grid;grid-template-columns:56px 1fr;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid #E2E8F0;align-items:start}
-.chain-step:last-child{border-bottom:none}
-.step-marker{width:44px;height:44px;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:600;font-size:1.1rem;color:var(--teal);flex-shrink:0}
-.step-title{font-family:var(--heading);font-weight:500;font-size:1.2rem;margin-bottom:0.4rem}
-.step-body{font-weight:300;font-size:0.95rem;color:#475569;line-height:1.7}
-
-.patent-section{padding:6rem 0;background:var(--light)}
-.patent-lead{font-family:var(--heading);font-weight:600;font-size:clamp(1.3rem,2.5vw,1.8rem);line-height:1.3;margin-bottom:1.5rem;color:var(--navy)}
-.patent-lead em{font-style:normal;color:var(--teal)}
+.patent-section{ background:var(--light); }
+.patent-section .section-heading { color:var(--teal); } 
+.patent-section .section-body { color:var(--navy); }
+.patent-lead{ color:var(--navy); }
+.patent-lead em{ color:var(--teal)}
 .patent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
 .patent-card{border-top:2px solid var(--teal);padding-top:1.2rem}
 .patent-card-title{font-family:var(--heading);font-weight:600;font-size:1rem;margin-bottom:0.4rem;color:var(--navy)}
 .patent-card-body{font-weight:300;font-size:0.92rem;color:#475569;line-height:1.6}
 .patent-ref{font-size:0.78rem;color:var(--slate);margin-top:2rem;text-align:center}
 
-.credibility{padding:5rem 0;background:var(--white);border-bottom:1px solid #E2E8F0}
-.credibility .section-body{color:#475569}
-.credential-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
-.credential{border-top:2px solid var(--teal);padding-top:1rem}
-.credential-title{font-family:var(--heading);font-weight:500;font-size:1rem;margin-bottom:0.3rem}
-.credential-body{font-weight:300;font-size:0.9rem;color:#64748B;line-height:1.5}
+.credibility{
+  background:var(--white);
+  border-bottom:1px solid #E2E8F0;
+}
 </style>
 </head>
 <body>
@@ -69,7 +54,7 @@
       <div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-77ab4cf0 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-right:0px;padding-left:15px">
       <ul>
         <li><a href="/" title="Home">Home</a></li>
-        <li><a href="/contract-management" title="Contract Mnagement">Contract Mnagement</a></li>
+        <li><a href="/contract-management" title="Contract Management">Contract Management</a></li>
         <li><a href="/student-accomodation" title="Student Accomodation">Student Accomodation</a></li>
         <li><a href="/property" title="Property">Property</a></li>
       </ul>
